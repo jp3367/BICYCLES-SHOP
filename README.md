@@ -1,194 +1,197 @@
-# 🚲 Bicycle Shop
+<a id="readme-top"></a>
 
-API REST para la gestión de una tienda de bicicletas, desarrollada en **Node.js + TypeScript** con **Express 5** y **Sequelize** sobre **MySQL**.
+<!-- PROJECT SHIELDS -->
+[![Node.js][Node.js]][Node-url]
+[![TypeScript][TypeScript]][TypeScript-url]
+[![Express][Express.js]][Express-url]
+[![Sequelize][Sequelize]][Sequelize-url]
+[![MySQL][MySQL]][MySQL-url]
+[![Postman][Postman]][Postman-url]
 
-Proyecto de la asignatura **Desarrollo Web en Entorno Servidor (DSW)** — 2º DAW.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <h3 align="center">Bicycle Shop</h3>
 
----
+  <p align="center">
+    REST API for managing a bicycle shop's bicycles and brands.
+    <br />
+    <a href="#usage"><strong>Explore the endpoints »</strong></a>
+    <br />
+    <br />
+    <a href="https://go.postman.co/workspace/4a9261fa-b085-4a63-8b11-5bd532956cf0">Postman Workspace</a>
+    &middot;
+    <a href="https://github.com/jp3367/BICYCLES-SHOP/issues">Report Bug</a>
+    &middot;
+    <a href="https://github.com/jp3367/BICYCLES-SHOP/issues">Request Feature</a>
+  </p>
+</div>
 
-## 📋 Índice
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#project-structure">Project Structure</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#data-models">Data Models</a></li>
+    <li><a href="#postman">Postman</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-- [Tecnologías](#-tecnologías)
-- [Estructura del proyecto](#-estructura-del-proyecto)
-- [Requisitos previos](#-requisitos-previos)
-- [Instalación](#-instalación)
-- [Configuración](#-configuración)
-- [Ejecución](#-ejecución)
-- [Modelos de datos](#-modelos-de-datos)
-- [Endpoints de la API](#-endpoints-de-la-api)
-- [Pruebas con Postman](#-pruebas-con-postman)
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
----
+Bicycle Shop is a backend REST API built for the *Desarrollo Web en Entorno Servidor (DSW)* course, 2nd year of DAW at IES El Rincón.
 
-## 🛠 Tecnologías
+It exposes CRUD operations for two resources:
 
-| Tecnología  | Uso                                   |
-|-------------|---------------------------------------|
-| Node.js     | Entorno de ejecución                  |
-| TypeScript  | Tipado estático                       |
-| Express 5   | Servidor HTTP y enrutado              |
-| Sequelize 6 | ORM para acceso a base de datos       |
-| MySQL       | Base de datos relacional (`mysql2`)   |
-| dotenv      | Carga de variables de entorno         |
-| tsx         | Ejecución en desarrollo con recarga   |
-| Postman     | Pruebas de los endpoints              |
+* **Bicycles**: brand, model, description, price and stock.
+* **Brands**: the manufacturers the shop works with.
 
----
+The code is organised in modules, and each module is split into layers:
 
-## 📁 Estructura del proyecto
+* **Model**: table definition with Sequelize.
+* **Service**: data access logic.
+* **Controller**: HTTP request/response handling and validation.
+* **Routes**: maps URLs to controller methods.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Built With
+
+* [![Node.js][Node.js]][Node-url]
+* [![TypeScript][TypeScript]][TypeScript-url]
+* [![Express][Express.js]][Express-url]
+* [![Sequelize][Sequelize]][Sequelize-url]
+* [![MySQL][MySQL]][MySQL-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Project Structure
 
 ```
 bicycle-shop/
 ├── backend/
 │   ├── src/
-│   │   ├── app.ts                  # Configuración de Express y rutas base
-│   │   ├── server.ts               # Arranque: conexión a BD, sync y listen
+│   │   ├── app.ts              Express setup and base routes
+│   │   ├── server.ts           Startup: DB connection, sync and listen
 │   │   ├── config/
-│   │   │   ├── database.ts         # Instancia de Sequelize
-│   │   │   └── env.ts              # Lectura de variables de entorno
+│   │   │   ├── database.ts     Sequelize instance
+│   │   │   └── env.ts          Environment variables
 │   │   ├── routes/
-│   │   │   └── index.ts            # Router principal (/api)
+│   │   │   └── index.ts        Main router (/api)
 │   │   └── modules/
-│   │       ├── bicycles/           # Módulo de bicicletas
-│   │       │   ├── bicycle.model.ts
-│   │       │   ├── bicycle.service.ts
-│   │       │   ├── bicycle.controller.ts
-│   │       │   └── bicycle.routes.ts
-│   │       └── brands/             # Módulo de marcas
-│   │           ├── brand.model.ts
-│   │           ├── brand.service.ts
-│   │           ├── brand.controller.ts
-│   │           ├── brand.routes.ts
-│   │           └── associations.ts # Relaciones entre modelos
+│   │       ├── bicycles/       model, service, controller, routes
+│   │       └── brands/         model, service, controller, routes, associations
 │   ├── .env.example
 │   ├── package.json
 │   └── tsconfig.json
-├── frontend/                       # (pendiente de desarrollo)
-└── postman/                        # Colección de peticiones de Postman
+├── frontend/                   (work in progress)
+└── postman/                    Postman collection
 ```
 
-Cada módulo sigue una arquitectura por capas:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-- **Model** → definición de la tabla con Sequelize.
-- **Service** → lógica de acceso a datos.
-- **Controller** → gestión de la petición/respuesta HTTP y validaciones.
-- **Routes** → asociación de rutas con los métodos del controlador.
+<!-- GETTING STARTED -->
+## Getting Started
 
----
+Follow these steps to get a local copy up and running.
 
-## ✅ Requisitos previos
+### Prerequisites
 
-- [Node.js](https://nodejs.org/) 20 o superior
-- npm
-- Servidor **MySQL** en ejecución (XAMPP, MAMP, Docker, etc.)
+* Node.js 20 or later
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+* A running MySQL server (XAMPP, MAMP, Docker...)
 
----
+### Installation
 
-## 📦 Instalación
-
-```bash
-git clone https://github.com/jp3367/BICYCLES-SHOP.git
-cd BICYCLES-SHOP/backend
-npm install
-```
-
----
-
-## ⚙️ Configuración
-
-1. Crea la base de datos en MySQL:
-
+1. Clone the repo
+   ```sh
+   git clone https://github.com/jp3367/BICYCLES-SHOP.git
+   ```
+2. Install NPM packages
+   ```sh
+   cd BICYCLES-SHOP/backend
+   npm install
+   ```
+3. Create the database in MySQL
    ```sql
    CREATE DATABASE dsw_products;
    ```
-
-2. Copia el fichero de ejemplo de variables de entorno y ajústalo:
-
-   ```bash
+4. Copy the example environment file and fill in your values
+   ```sh
    cp .env.example .env
    ```
 
-   | Variable      | Descripción                 | Valor por defecto |
-   |---------------|-----------------------------|-------------------|
-   | `PORT`        | Puerto del servidor         | `3000`            |
-   | `DB_HOST`     | Host de MySQL               | `localhost`       |
-   | `DB_PORT`     | Puerto de MySQL             | `3306`            |
-   | `DB_NAME`     | Nombre de la base de datos  | `dsw_products`    |
-   | `DB_USER`     | Usuario de MySQL            | `root`            |
-   | `DB_PASSWORD` | Contraseña de MySQL         | *(vacía)*         |
+   | Variable      | Description        | Default        |
+   |---------------|--------------------|----------------|
+   | `PORT`        | Server port        | `3000`         |
+   | `DB_HOST`     | MySQL host         | `localhost`    |
+   | `DB_PORT`     | MySQL port         | `3306`         |
+   | `DB_NAME`     | Database name      | `dsw_products` |
+   | `DB_USER`     | MySQL user         | `root`         |
+   | `DB_PASSWORD` | MySQL password     | *(empty)*      |
 
----
+5. Start the development server
+   ```sh
+   npm run dev
+   ```
 
-## ▶️ Ejecución
+Other scripts:
 
-Desde la carpeta `backend/`:
+| Command         | Description                            |
+|-----------------|----------------------------------------|
+| `npm run dev`   | Development mode with auto-reload      |
+| `npm run build` | Compile TypeScript                     |
+| `npm start`     | Run the compiled build (`dist/server.js`) |
 
-| Comando         | Descripción                                        |
-|-----------------|----------------------------------------------------|
-| `npm run dev`   | Arranca en modo desarrollo con recarga automática  |
-| `npm run build` | Compila TypeScript                                 |
-| `npm start`     | Ejecuta la versión compilada (`dist/server.js`)    |
+> **Note:** in development the server runs `sequelize.sync({ force: true })`, which **drops and recreates all tables** on every start.
 
-Al arrancar, el servidor:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-1. Comprueba la conexión con MySQL.
-2. Sincroniza los modelos con la base de datos.
-3. Escucha en `http://localhost:3000`.
+<!-- USAGE -->
+## Usage
 
-> ⚠️ En desarrollo se usa `sequelize.sync({ force: true })`, que **borra y recrea las tablas** en cada arranque. En producción debe usarse `sequelize.sync()` o migraciones.
-
----
-
-## 🗃 Modelos de datos
-
-### Bicycle (`bicycles`)
-
-| Campo         | Tipo                 | Obligatorio | Notas                 |
-|---------------|----------------------|-------------|-----------------------|
-| `id`          | INTEGER UNSIGNED     | —           | PK, autoincremental   |
-| `brand`       | STRING(150)          | ✅          |                       |
-| `model`       | STRING(150)          | ❌          |                       |
-| `description` | TEXT                 | ❌          |                       |
-| `price`       | DECIMAL(10,2)        | ✅          |                       |
-| `stock`       | INTEGER UNSIGNED     | ❌          | Por defecto `0`       |
-| `createdAt`   | DATE                 | —           | Automático            |
-| `updatedAt`   | DATE                 | —           | Automático            |
-
-### Brand (`brands`)
-
-| Campo       | Tipo             | Obligatorio | Notas               |
-|-------------|------------------|-------------|---------------------|
-| `id`        | INTEGER UNSIGNED | —           | PK, autoincremental |
-| `name`      | STRING(150)      | ✅          |                     |
-| `createdAt` | DATE             | —           | Automático          |
-| `updatedAt` | DATE             | —           | Automático          |
-
-**Relación:** una marca (`Brand`) tiene muchas bicicletas (`Bicycle`) — definida en `associations.ts`.
-
----
-
-## 🌐 Endpoints de la API
-
-URL base: `http://localhost:3000`
+Base URL: `http://localhost:3000`
 
 ### General
 
-| Método | Ruta           | Descripción                   |
-|--------|----------------|-------------------------------|
-| GET    | `/`            | Comprueba que la API funciona |
-| GET    | `/holaholita`  | Ruta de prueba                |
+| Method | Route         | Description              |
+|--------|---------------|--------------------------|
+| GET    | `/`           | Health check             |
+| GET    | `/holaholita` | Test route               |
 
-### Bicicletas — `/api/bicycles`
+### Bicycles `/api/bicycles`
 
-| Método | Ruta                 | Descripción                  | Respuesta OK   |
-|--------|----------------------|------------------------------|----------------|
-| GET    | `/api/bicycles`      | Lista todas las bicicletas   | `200`          |
-| GET    | `/api/bicycles/:id`  | Obtiene una bicicleta por id | `200` / `404`  |
-| POST   | `/api/bicycles`      | Crea una bicicleta           | `201` / `400`  |
-| PUT    | `/api/bicycles/:id`  | Actualiza una bicicleta      | `200` / `404`  |
-| DELETE | `/api/bicycles/:id`  | Elimina una bicicleta        | `204` / `404`  |
+| Method | Route               | Description          | Status        |
+|--------|---------------------|----------------------|---------------|
+| GET    | `/api/bicycles`     | List all bicycles    | `200`         |
+| GET    | `/api/bicycles/:id` | Get a bicycle by id  | `200` / `404` |
+| POST   | `/api/bicycles`     | Create a bicycle     | `201` / `400` |
+| PUT    | `/api/bicycles/:id` | Update a bicycle     | `200` / `404` |
+| DELETE | `/api/bicycles/:id` | Delete a bicycle     | `204` / `404` |
 
-Ejemplo de cuerpo (POST / PUT):
+Request body (`brand` and `price` are required on create):
 
 ```json
 {
@@ -200,19 +203,17 @@ Ejemplo de cuerpo (POST / PUT):
 }
 ```
 
-> `brand` y `price` son obligatorios al crear.
+### Brands `/api/brands`
 
-### Marcas — `/api/brands`
+| Method | Route             | Description        | Status        |
+|--------|-------------------|--------------------|---------------|
+| GET    | `/api/brands`     | List all brands    | `200`         |
+| GET    | `/api/brands/:id` | Get a brand by id  | `200` / `404` |
+| POST   | `/api/brands`     | Create a brand     | `201` / `400` |
+| PUT    | `/api/brands/:id` | Update a brand     | `200` / `404` |
+| DELETE | `/api/brands/:id` | Delete a brand     | `204` / `404` |
 
-| Método | Ruta               | Descripción              | Respuesta OK   |
-|--------|--------------------|--------------------------|----------------|
-| GET    | `/api/brands`      | Lista todas las marcas   | `200`          |
-| GET    | `/api/brands/:id`  | Obtiene una marca por id | `200` / `404`  |
-| POST   | `/api/brands`      | Crea una marca           | `201` / `400`  |
-| PUT    | `/api/brands/:id`  | Actualiza una marca      | `200` / `404`  |
-| DELETE | `/api/brands/:id`  | Elimina una marca        | `204` / `404`  |
-
-Ejemplo de cuerpo (POST / PUT):
+Request body (`name` is required on create):
 
 ```json
 {
@@ -220,33 +221,107 @@ Ejemplo de cuerpo (POST / PUT):
 }
 ```
 
-> `name` es obligatorio al crear.
+Example with `curl`:
 
-### Ejemplo con `curl`
-
-```bash
+```sh
 curl -X POST http://localhost:3000/api/bicycles \
   -H "Content-Type: application/json" \
   -d '{"brand":"Orbea","model":"Sky","price":189.99,"stock":5}'
 ```
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🧪 Pruebas con Postman
+<!-- DATA MODELS -->
+## Data Models
 
-En la carpeta [`postman/`](postman/) se incluye la colección **bicycle-shop** con peticiones para todos los endpoints (Bicycles y Brands). Puedes abrirla desde Postman con la vista local del workspace.
+### Bicycle (`bicycles`)
 
----
+| Field         | Type             | Required | Notes              |
+|---------------|------------------|----------|--------------------|
+| `id`          | INTEGER UNSIGNED | -        | PK, auto increment |
+| `brand`       | STRING(150)      | Yes      |                    |
+| `model`       | STRING(150)      | No       |                    |
+| `description` | TEXT             | No       |                    |
+| `price`       | DECIMAL(10,2)    | Yes      |                    |
+| `stock`       | INTEGER UNSIGNED | No       | Defaults to `0`    |
+| `createdAt`   | DATE             | -        | Automatic          |
+| `updatedAt`   | DATE             | -        | Automatic          |
 
-## 🚧 Próximos pasos
+### Brand (`brands`)
 
-- [ ] Desarrollo del frontend
-- [ ] Relacionar `Bicycle` con `Brand` mediante `brandId`
-- [ ] Validación de datos más completa
-- [ ] Middleware de gestión de errores
+| Field       | Type             | Required | Notes              |
+|-------------|------------------|----------|--------------------|
+| `id`        | INTEGER UNSIGNED | -        | PK, auto increment |
+| `name`      | STRING(150)      | Yes      |                    |
+| `createdAt` | DATE             | -        | Automatic          |
+| `updatedAt` | DATE             | -        | Automatic          |
 
----
+A brand has many bicycles (see `associations.ts`).
 
-## 👤 Autor
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-**Juan Pablo Miguel Velásquez** — 2º DAW, IES El Rincón
+<!-- POSTMAN -->
+## Postman
+
+All the requests used to test the API are available in Postman:
+
+**[Open the Bicycle Shop Postman Workspace](https://go.postman.co/workspace/4a9261fa-b085-4a63-8b11-5bd532956cf0)**
+
+The collection is also included in this repository under the [`postman/`](postman/) folder, split into two folders: **Bicycles** and **Brands**.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] CRUD for bicycles
+- [x] CRUD for brands
+- [x] Postman collection
+- [ ] Link `Bicycle` to `Brand` through `brandId`
+- [ ] Better input validation
+- [ ] Error handling middleware
+- [ ] Frontend
+
+See the [open issues](https://github.com/jp3367/BICYCLES-SHOP/issues) for a full list of proposed features and known issues.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+## License
+
+Distributed under the ISC License.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+## Contact
+
+Juan Pablo Miguel Velásquez - juanpablomiguelvelasquez@alumno.ieselrincon.es
+
+Project Link: [https://github.com/jp3367/BICYCLES-SHOP](https://github.com/jp3367/BICYCLES-SHOP)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* [Express documentation](https://expressjs.com/)
+* [Sequelize documentation](https://sequelize.org/)
+* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+* [Shields.io](https://shields.io/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[Node.js]: https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
+[Node-url]: https://nodejs.org/
+[TypeScript]: https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
+[Express.js]: https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white
+[Express-url]: https://expressjs.com/
+[Sequelize]: https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white
+[Sequelize-url]: https://sequelize.org/
+[MySQL]: https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white
+[MySQL-url]: https://www.mysql.com/
+[Postman]: https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white
+[Postman-url]: https://go.postman.co/workspace/4a9261fa-b085-4a63-8b11-5bd532956cf0
