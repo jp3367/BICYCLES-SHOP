@@ -1,0 +1,14 @@
+$kind: http-request
+name: http://localhost:3000/api/brands/2
+url: http://localhost:3000/api/brands/2
+method: PUT
+body:
+  type: json
+  content: |-
+    {
+        "id": 2,
+        "name": "BH",
+        "updatedAt": "2026-09-24T17:34:49.724Z",
+        "createdAt": "2026-09-24T17:34:49.724Z"
+    }
+order: 3054424245360657

@@ -1,0 +1,5 @@
+$kind: http-request
+name: http://localhost:3000/api/bicycles POST
+url: http://localhost:3000/api/bicycles
+method: POST
+order: 4241550983016783

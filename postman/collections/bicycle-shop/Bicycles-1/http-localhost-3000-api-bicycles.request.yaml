@@ -1,0 +1,5 @@
+$kind: http-request
+name: http://localhost:3000/api/bicycles
+url: http://localhost:3000/api/bicycles
+method: GET
+order: 4320336420295425

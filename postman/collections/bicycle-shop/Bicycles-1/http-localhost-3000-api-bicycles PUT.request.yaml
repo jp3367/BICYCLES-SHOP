@@ -1,0 +1,15 @@
+$kind: http-request
+name: http://localhost:3000/api/bicycles PUT
+url: http://localhost:3000/api/bicycles/2
+method: PUT
+body:
+  type: json
+  content: |-
+    {
+      "brand": "Orbea",
+      "model": "Sky",
+      "description": "Great for any occassion",
+      "price": 189.99,
+      "stock": 0
+    }
+order: 3988943302364302

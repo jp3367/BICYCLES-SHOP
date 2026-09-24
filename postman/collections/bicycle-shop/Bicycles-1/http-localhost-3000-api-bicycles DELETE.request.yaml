@@ -1,0 +1,5 @@
+$kind: http-request
+name: http://localhost:3000/api/bicycles DELETE
+url: http://localhost:3000/api/bicycles/1
+method: DELETE
+order: 1790269893246
