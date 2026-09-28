@@ -12,7 +12,7 @@ export class Bicycle extends Model<
     InferCreationAttributes<Bicycle>
 > {
     declare id: CreationOptional<number>;
-    declare brand: string;
+    declare brandId: number;
     declare model: string | null;
     declare description: string | null;
     declare price: number;
@@ -28,9 +28,12 @@ Bicycle.init(
             autoIncrement: true,
             primaryKey: true,
         },
-        brand: {
-            type: DataTypes.STRING(150),
+        brandId: {
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
+            references: { model: "brands", key: "id" },
+            onUpdate: "CASCADE",
+            onDelete: "RESTRICT",
         },
         model: {
             type: DataTypes.STRING(150),

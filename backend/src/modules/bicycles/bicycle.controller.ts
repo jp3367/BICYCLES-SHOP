@@ -23,7 +23,7 @@ export class BicycleController {
             const bicycle = await BicycleService.findById(id);
             if (!bicycle) {
                 res.status(404).json({
-                    message: "Bicicleta no encontrada",
+                    message: "Bicycle not found",
                 });
                 return;
             }
@@ -38,16 +38,23 @@ export class BicycleController {
         next: NextFunction
     ) {
         try {
-            const { brand, model, description, price, stock } = req.body;
-            if (!brand || price === undefined) {
+            const { brandId, model, description, price, stock } = req.body;
+            if (brandId === undefined || price === undefined) {
                 res.status(400).json({
-                    message: "brand y price son obligatorios",
+                    message: "brandId and price are required",
+                });
+                return;
+            }
+            if (!(await BicycleService.brandExists(Number(brandId)))) {
+                res.status(400).json({
+                    message: "Brand not found",
                 });
                 return;
             }
             const bicycle = await BicycleService.create({
-                brand,
+                brandId: Number(brandId),
                 model,
+                description,
                 price,
                 stock,
             });
@@ -66,14 +73,27 @@ export class BicycleController {
             const bicycle = await BicycleService.findById(id);
             if (!bicycle) {
                 res.status(404).json({
-                    message: "Bicicleta no encontrada",
+                    message: "Bicycle not found",
                 });
                 return;
             }
-            const updatedBicycle = await BicycleService.update(
-                bicycle,
-                req.body
-            );
+            const { brandId, model, description, price, stock } = req.body;
+            if (
+                brandId !== undefined &&
+                !(await BicycleService.brandExists(Number(brandId)))
+            ) {
+                res.status(400).json({
+                    message: "Brand not found",
+                });
+                return;
+            }
+            const updatedBicycle = await BicycleService.update(bicycle, {
+                ...(brandId !== undefined && { brandId: Number(brandId) }),
+                ...(model !== undefined && { model }),
+                ...(description !== undefined && { description }),
+                ...(price !== undefined && { price }),
+                ...(stock !== undefined && { stock }),
+            });
             res.json(updatedBicycle);
         } catch (error) {
             next(error);
@@ -89,7 +109,7 @@ export class BicycleController {
             const bicycle = await BicycleService.findById(id);
             if (!bicycle) {
                 res.status(404).json({
-                    message: "Bicicleta no encontrada",
+                    message: "Bicycle not found",
                 });
                 return;
             }

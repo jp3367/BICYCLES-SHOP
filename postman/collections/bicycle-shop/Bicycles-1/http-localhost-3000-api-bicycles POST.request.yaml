@@ -2,4 +2,14 @@ $kind: http-request
 name: http://localhost:3000/api/bicycles POST
 url: http://localhost:3000/api/bicycles
 method: POST
+body:
+  type: json
+  content: |-
+    {
+      "brandId": 1,
+      "model": "Sky",
+      "description": "Great for any occasion",
+      "price": 189.99,
+      "stock": 5
+    }
 order: 4241550983016783

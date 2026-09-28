@@ -6,9 +6,6 @@ body:
   type: json
   content: |-
     {
-        "id": 2,
-        "name": "BH",
-        "updatedAt": "2026-09-24T17:34:49.724Z",
-        "createdAt": "2026-09-24T17:34:49.724Z"
+        "name": "BH"
     }
 order: 3054424245360657

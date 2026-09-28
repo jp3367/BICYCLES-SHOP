@@ -6,9 +6,9 @@ body:
   type: json
   content: |-
     {
-      "brand": "Orbea",
+      "brandId": 1,
       "model": "Sky",
-      "description": "Great for any occassion",
+      "description": "Great for any occasion",
       "price": 189.99,
       "stock": 0
     }

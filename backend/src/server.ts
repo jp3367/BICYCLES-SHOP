@@ -1,29 +1,32 @@
 import { app } from "./app.js";
 import { sequelize } from "./config/database.js";
 import { env } from "./config/env.js";
+import { defineAssociations } from "./models/associations.js";
 
-// Importamos los modelos para que Sequelize los registre.
+// Import models so Sequelize registers them.
 import "./modules/bicycles/bicycle.model.js";
 import "./modules/brands/brand.model.js";
 async function startServer() {
     try {
+        defineAssociations();
+
         await sequelize.authenticate();
-        console.log("Conexión con MySQL establecida.");
-        //En producción, una de las opciones
+        console.log("MySQL connection established.");
+        // In production, one of the options
         //await sequelize.sync();
 
-        //En desarrollo, para que se creen las tablas automáticamente
+        // In development, so tables are created automatically
         await sequelize.sync({ force: true }).then (() => {
-            console.log("Base de datos sincronizada.");
+            console.log("Database synchronized.");
         });
         app.listen(env.PORT, () => {
             console.log(
-                `Servidor funcionando en http://${env.DB_HOST}:${env.PORT}`
+                `Server running at http://${env.DB_HOST}:${env.PORT}`
             );
         });
     } catch (error) {
         console.error(
-            "No se pudo iniciar la aplicación:",
+            "Could not start the application:",
             error
         );
         process.exit(1);

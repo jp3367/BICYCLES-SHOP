@@ -1,4 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
+import { ForeignKeyConstraintError } from "sequelize";
 import { BrandService } from "./brand.service.js";
 
 export class BrandController {
@@ -24,7 +25,7 @@ export class BrandController {
             const brand = await BrandService.findById(id);
             if (!brand) {
                 res.status(404).json({
-                    message: "Marca no encontrada",
+                    message: "Brand not found",
                 });
                 return;
             }
@@ -42,7 +43,7 @@ export class BrandController {
             const { name } = req.body;
             if (!name) {
                 res.status(400).json({
-                    message: "name es obligatorio",
+                    message: "name is required",
                 });
                 return;
             }
@@ -62,7 +63,7 @@ export class BrandController {
             const brand = await BrandService.findById(id);
             if (!brand) {
                 res.status(404).json({
-                    message: "Marca no encontrada",
+                    message: "Brand not found",
                 });
                 return;
             }
@@ -83,13 +84,20 @@ export class BrandController {
             const brand = await BrandService.findById(id);
             if (!brand) {
                 res.status(404).json({
-                    message: "Marca no encontrada",
+                    message: "Brand not found",
                 });
                 return;
             }
             await BrandService.delete(brand);
             res.status(204).send();
         } catch (error) {
+            // onDelete: "RESTRICT" blocks deleting a brand that still has bicycles.
+            if (error instanceof ForeignKeyConstraintError) {
+                res.status(409).json({
+                    message: "Cannot delete a brand that has bicycles",
+                });
+                return;
+            }
             next(error);
         }
     }

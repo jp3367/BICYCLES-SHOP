@@ -62,7 +62,7 @@ Bicycle Shop is a backend REST API built for the *Desarrollo Web en Entorno Serv
 
 It exposes CRUD operations for two resources:
 
-* **Bicycles**: brand, model, description, price and stock.
+* **Bicycles**: brand (`brandId`), model, description, price and stock.
 * **Brands**: the manufacturers the shop works with.
 
 The code is organised in modules, and each module is split into layers:
@@ -95,11 +95,13 @@ bicycle-shop/
 │   │   ├── config/
 │   │   │   ├── database.ts     Sequelize instance
 │   │   │   └── env.ts          Environment variables
+│   │   ├── models/
+│   │   │   └── associations.ts Brand 1:N Bicycle relationship
 │   │   ├── routes/
 │   │   │   └── index.ts        Main router (/api)
 │   │   └── modules/
 │   │       ├── bicycles/       model, service, controller, routes
-│   │       └── brands/         model, service, controller, routes, associations
+│   │       └── brands/         model, service, controller, routes
 │   ├── .env.example
 │   ├── package.json
 │   └── tsconfig.json
@@ -191,11 +193,11 @@ Base URL: `http://localhost:3000`
 | PUT    | `/api/bicycles/:id` | Update a bicycle     | `200` / `404` |
 | DELETE | `/api/bicycles/:id` | Delete a bicycle     | `204` / `404` |
 
-Request body (`brand` and `price` are required on create):
+Request body (`brandId` and `price` are required on create; `brandId` must be an existing brand, otherwise `400`). Responses include the related `brand` (`id`, `name`):
 
 ```json
 {
-  "brand": "Orbea",
+  "brandId": 1,
   "model": "Sky",
   "description": "Great for any occasion",
   "price": 189.99,
@@ -211,7 +213,7 @@ Request body (`brand` and `price` are required on create):
 | GET    | `/api/brands/:id` | Get a brand by id  | `200` / `404` |
 | POST   | `/api/brands`     | Create a brand     | `201` / `400` |
 | PUT    | `/api/brands/:id` | Update a brand     | `200` / `404` |
-| DELETE | `/api/brands/:id` | Delete a brand     | `204` / `404` |
+| DELETE | `/api/brands/:id` | Delete a brand     | `204` / `404` / `409` (has bicycles) |
 
 Request body (`name` is required on create):
 
@@ -226,7 +228,7 @@ Example with `curl`:
 ```sh
 curl -X POST http://localhost:3000/api/bicycles \
   -H "Content-Type: application/json" \
-  -d '{"brand":"Orbea","model":"Sky","price":189.99,"stock":5}'
+  -d '{"brandId":1,"model":"Sky","price":189.99,"stock":5}'
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -239,7 +241,7 @@ curl -X POST http://localhost:3000/api/bicycles \
 | Field         | Type             | Required | Notes              |
 |---------------|------------------|----------|--------------------|
 | `id`          | INTEGER UNSIGNED | -        | PK, auto increment |
-| `brand`       | STRING(150)      | Yes      |                    |
+| `brandId`     | INTEGER UNSIGNED | Yes      | FK → `brands.id` (ON UPDATE CASCADE, ON DELETE RESTRICT) |
 | `model`       | STRING(150)      | No       |                    |
 | `description` | TEXT             | No       |                    |
 | `price`       | DECIMAL(10,2)    | Yes      |                    |
@@ -256,7 +258,7 @@ curl -X POST http://localhost:3000/api/bicycles \
 | `createdAt` | DATE             | -        | Automatic          |
 | `updatedAt` | DATE             | -        | Automatic          |
 
-A brand has many bicycles (see `associations.ts`).
+A brand has many bicycles and each bicycle belongs to one brand (see `src/models/associations.ts`).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -277,7 +279,7 @@ The collection is also included in this repository under the [`postman/`](postma
 - [x] CRUD for bicycles
 - [x] CRUD for brands
 - [x] Postman collection
-- [ ] Link `Bicycle` to `Brand` through `brandId`
+- [x] Link `Bicycle` to `Brand` through `brandId`
 - [ ] Better input validation
 - [ ] Error handling middleware
 - [ ] Frontend
