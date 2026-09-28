@@ -1,7 +1,6 @@
 import { Bicycle } from "./bicycle.model.js";
 import { Brand } from "../brands/brand.model.js";
 
-// Include the related brand (only id and name) in every bicycle query.
 const includeBrand = {
     model: Brand,
     as: "brand",
@@ -38,7 +37,6 @@ export class BicycleService {
         stock?: number;
     }) {
         const bicycle = await Bicycle.create(data);
-        // Reload so the response includes the brand.
         return BicycleService.findById(bicycle.id);
     }
     static async update(

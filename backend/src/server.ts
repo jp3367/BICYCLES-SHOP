@@ -3,7 +3,6 @@ import { sequelize } from "./config/database.js";
 import { env } from "./config/env.js";
 import { defineAssociations } from "./models/associations.js";
 
-// Import models so Sequelize registers them.
 import "./modules/bicycles/bicycle.model.js";
 import "./modules/brands/brand.model.js";
 async function startServer() {
@@ -12,10 +11,7 @@ async function startServer() {
 
         await sequelize.authenticate();
         console.log("MySQL connection established.");
-        // In production, one of the options
-        //await sequelize.sync();
 
-        // In development, so tables are created automatically
         await sequelize.sync({ force: true }).then (() => {
             console.log("Database synchronized.");
         });

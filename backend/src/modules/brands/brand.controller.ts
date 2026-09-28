@@ -91,7 +91,6 @@ export class BrandController {
             await BrandService.delete(brand);
             res.status(204).send();
         } catch (error) {
-            // onDelete: "RESTRICT" blocks deleting a brand that still has bicycles.
             if (error instanceof ForeignKeyConstraintError) {
                 res.status(409).json({
                     message: "Cannot delete a brand that has bicycles",
