@@ -1,0 +1,5 @@
+$kind: http-request
+name: http://localhost:3000/api/bicycles/eagerly/1
+url: http://localhost:3000/api/bicycles/eagerly/1
+method: GET
+order: 4460163375912957

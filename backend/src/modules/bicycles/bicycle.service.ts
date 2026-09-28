@@ -20,6 +20,12 @@ export class BicycleService {
             include: [includeBrand],
         });
     }
+
+    static async findEagerlyById(id: number) {
+        return Bicycle.findByPk(id, {
+            include: [includeBrand],
+        });
+    }
     static async brandExists(brandId: number) {
         const brand = await Brand.findByPk(brandId);
         return brand !== null;

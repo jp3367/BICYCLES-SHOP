@@ -32,6 +32,25 @@ export class BicycleController {
             next(error);
         }
     }
+    static async getEagerlyById(
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) {
+        try {
+            const id = Number(req.params.id);
+            const bicycle = await BicycleService.findEagerlyById(id);
+            if (!bicycle) {
+                res.status(404).json({
+                    message: "Bicycle not found",
+                });
+                return;
+            }
+            res.json(bicycle);
+        } catch (error) {
+            next(error);
+        }
+    }
     static async create(
         req: Request,
         res: Response,
