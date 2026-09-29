@@ -5,6 +5,7 @@ import { defineAssociations } from "./models/associations.js";
 
 import "./modules/bicycles/bicycle.model.js";
 import "./modules/brands/brand.model.js";
+import "./modules/bicycle-details/bicycle-detail.model.js";
 async function startServer() {
     try {
         defineAssociations();

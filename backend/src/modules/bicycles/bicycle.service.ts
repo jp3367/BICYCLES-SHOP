@@ -1,5 +1,6 @@
 import { Bicycle } from "./bicycle.model.js";
 import { Brand } from "../brands/brand.model.js";
+import { BicycleDetail } from "../bicycle-details/bicycle-detail.model.js";
 
 const includeBrand = {
     model: Brand,
@@ -23,6 +24,18 @@ export class BicycleService {
     static async findEagerlyById(id: number) {
         return Bicycle.findByPk(id, {
             include: [includeBrand],
+        });
+    }
+    static async findAllEagerlyByFrameMaterial(frameMaterial: string) {
+        return Bicycle.findAll({
+            include: [
+                {
+                    model: BicycleDetail,
+                    as: "detail",
+                    where: { frameMaterial },
+                },
+            ],
+            order: [["id", "ASC"]],
         });
     }
     static async brandExists(brandId: number) {
