@@ -240,6 +240,7 @@ A brand has many bicycles and each bicycle belongs to one brand (see `src/models
 
 ### Entity-Relationship Diagram
 
+RELATION 1:1
 ```mermaid
 erDiagram
     Bicycle ||--o| BicycleDetail : has
@@ -261,6 +262,24 @@ erDiagram
         string weight
         string suspension
     }
+```
+
+RELATION 1:N
+```mermaid
+erDiagram
+BRAND ||--o{ BICYCLE : has
+BRAND {
+int id PK
+string name
+}
+BICYCLE {
+int id PK
+int brandId FK
+string model
+string description
+float price
+int stock
+}
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
