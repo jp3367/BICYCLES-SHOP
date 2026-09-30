@@ -236,6 +236,30 @@ curl -X POST http://localhost:3000/api/bicycles \
 <!-- DATA MODELS -->
 ## Data Models
 
+A brand has many bicycles and each bicycle belongs to one brand (see `src/models/associations.ts`).
+
+### Entity-Relationship Diagram
+
+RELATION 1:N
+```mermaid
+erDiagram
+BRAND ||--o{ BICYCLE : has
+BRAND {
+int id PK
+string name
+}
+BICYCLE {
+int id PK
+int brandId FK
+string model
+string description
+float price
+int stock
+}
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Bicycle (`bicycles`)
 
 | Field         | Type             | Required | Notes              |
