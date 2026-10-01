@@ -19,7 +19,7 @@
     <a href="#usage"><strong>Explore the endpoints »</strong></a>
     <br />
     <br />
-    <a href="https://go.postman.co/workspace/4a9261fa-b085-4a63-8b11-5bd532956cf0">Postman Workspace</a>
+    <a href="https://documenter.getpostman.com/view/58320230/2sBYHNWNar">Postman Workspace</a>
     &middot;
     <a href="https://github.com/jp3367/BICYCLES-SHOP/issues">Report Bug</a>
     &middot;
@@ -315,7 +315,7 @@ A brand has many bicycles and each bicycle belongs to one brand (see `src/models
 
 All the requests used to test the API are available in Postman:
 
-**[Open the Bicycle Shop Postman Workspace](h[ttps://go.postman.co/workspace/4a9261fa-b085-4a63-8b11-5bd532956cf0](https://juanpablomiguelvelasquez-5850993.postman.co/workspace/4a9261fa-b085-4a63-8b11-5bd532956cf0/documentation/9F752cf9aaB7bfaefdCb44a0))**
+**[Open the Bicycle Shop Postman Workspace](https://documenter.getpostman.com/view/58320230/2sBYHNWNar)**
 
 The collection is also included in this repository under the [`postman/`](postman/) folder, split into two folders: **Bicycles** and **Brands**.
 
@@ -374,4 +374,4 @@ Project Link: [https://github.com/jp3367/BICYCLES-SHOP](https://github.com/jp336
 [MySQL]: https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white
 [MySQL-url]: https://www.mysql.com/
 [Postman]: https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white
-[Postman-url]: https://go.postman.co/workspace/4a9261fa-b085-4a63-8b11-5bd532956cf0
+[Postman-url]: https://documenter.getpostman.com/view/58320230/2sBYHNWNar
