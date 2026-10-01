@@ -281,6 +281,22 @@ float price
 int stock
 }
 ```
+RELATION 1:N
+```mermaid
+erDiagram
+Customer ||--o{ Order : has
+Customer {
+number id PK
+string name
+string email
+}
+Order {
+number id PK
+number customerId FK
+datetime orderDate
+string status
+}
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
