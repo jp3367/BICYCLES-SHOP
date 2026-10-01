@@ -1,0 +1,5 @@
+$kind: http-request
+name: http://localhost:3000/api/orders/2
+url: http://localhost:3000/api/orders/2
+method: DELETE
+order: 3948762540593389

@@ -1,0 +1,12 @@
+$kind: http-request
+name: http://localhost:3000/api/customers
+url: http://localhost:3000/api/customers
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "name": "Ibu",
+      "email": "ibu@example.com"
+    }
+order: 327694242256237

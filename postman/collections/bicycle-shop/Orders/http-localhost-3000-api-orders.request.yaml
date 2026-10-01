@@ -1,0 +1,12 @@
+$kind: http-request
+name: http://localhost:3000/api/orders
+url: http://localhost:3000/api/orders
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "customerId": 1,
+      "status": "paid"
+    }
+order: 3588721869346209

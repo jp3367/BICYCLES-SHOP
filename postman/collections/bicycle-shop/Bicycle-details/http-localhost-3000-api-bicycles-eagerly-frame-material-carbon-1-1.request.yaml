@@ -1,0 +1,5 @@
+$kind: http-request
+name: http://localhost:3000/api/bicycles/eagerly/frame-material/carbon/1
+url: http://localhost:3000/api/bicycles/eagerly/frame-material/carbon/1
+method: DELETE
+order: 3274619907183433
