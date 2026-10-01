@@ -1,0 +1,12 @@
+$kind: http-request
+name: http://localhost:3000/api/order-items/1
+url: http://localhost:3000/api/order-items/1
+method: PUT
+body:
+  type: json
+  content: |-
+    {
+      "quantity": 3,
+      "unitPrice": 1250.00
+    }
+order: 7000

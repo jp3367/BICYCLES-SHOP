@@ -1,0 +1,5 @@
+$kind: http-request
+name: http://localhost:3000/api/order-items/summary/paid
+url: http://localhost:3000/api/order-items/summary/paid
+method: GET
+order: 9000

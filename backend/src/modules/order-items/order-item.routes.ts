@@ -1,0 +1,12 @@
+import { Router } from "express";
+import { OrderItemController } from "./order-item.controller.js";
+const router = Router();
+router.get("/", OrderItemController.getAll);
+router.get("/order/:orderId", OrderItemController.getByOrderId);
+router.get("/order/:orderId/bicycles", OrderItemController.getOrderWithBicycles);
+router.get("/summary/:status", OrderItemController.getOrderSummaryByStatus);
+router.get("/:id",OrderItemController.getById);
+router.post("/", OrderItemController.create);
+router.put("/:id", OrderItemController.update);
+router.delete("/:id", OrderItemController.delete);
+export default router;
