@@ -331,7 +331,7 @@ A brand has many bicycles and each bicycle belongs to one brand (see `src/models
 
 All the requests used to test the API are available in Postman:
 
-**[Open the Bicycle Shop Postman Workspace](h[ttps://go.postman.co/workspace/4a9261fa-b085-4a63-8b11-5bd532956cf0](https://juanpablomiguelvelasquez-5850993.postman.co/workspace/4a9261fa-b085-4a63-8b11-5bd532956cf0/documentation/9F752cf9aaB7bfaefdCb44a0))**
+**[Open the Bicycle Shop Postman Workspace](https://documenter.getpostman.com/view/58320230/2sBYHNWNar))**
 
 The collection is also included in this repository under the [`postman/`](postman/) folder, split into two folders: **Bicycles** and **Brands**.
 
