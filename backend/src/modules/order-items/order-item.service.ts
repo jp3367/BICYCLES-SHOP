@@ -38,6 +38,7 @@ export class OrderItemService {
             order: [["id", "ASC"]],
         });
     }
+    //New 
     static async findBrandwithBicycles(name: string) {
         return Order.findAll({
             include: [
