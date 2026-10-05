@@ -1,0 +1,848 @@
+{
+  "info": {
+    "_postman_id": "51200ea1-ae02-4951-b5ab-5fddbaa25cd3",
+    "name": "bicycle-shop",
+    "description": "REST API for a bicycle shop: brands, bicycles, bicycle details, customers, orders and order items. https://github.com/jp3367/BICYCLES-SHOP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58320230",
+    "_collection_link": "https://go.postman.co/collection/58320230-51200ea1-ae02-4951-b5ab-5fddbaa25cd3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Brands",
+      "item": [
+        {
+          "name": "http://localhost:3000/api/brands",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/brands",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "brands"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/brands",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Orbea\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/brands",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "brands"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/brands/2",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"BH\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/brands/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "brands",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/brands/2",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/brands/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "brands",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "http://localhost:3000/api/customers/ibu/orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/customers/ibu/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "customers",
+                "ibu",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/customers",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ibu\",\n  \"email\": \"ibu@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/customers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "customers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/customers/1",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/customers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "customers",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/customers/1",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/customers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "customers",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bicycles",
+      "item": [
+        {
+          "name": "http://localhost:3000/api/bicycles DELETE",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/bicycles/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "bicycles",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/bicycles PUT",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brandId\": 1,\n  \"model\": \"Sky\",\n  \"description\": \"Great for any occasion\",\n  \"price\": 189.99,\n  \"stock\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/bicycles/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "bicycles",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/bicycles POST",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brandId\": 1,\n  \"model\": \"Sky\",\n  \"description\": \"Great for any occasion\",\n  \"price\": 189.99,\n  \"stock\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/bicycles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "bicycles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/bicycles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/bicycles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "bicycles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/bicycles/eagerly/1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/bicycles/eagerly/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "bicycles",
+                "eagerly",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "http://localhost:3000/api/orders/customer/1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/orders/customer/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "orders",
+                "customer",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/orders",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": 1,\n  \"status\": \"paid\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/orders/1",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n        \"id\": 1,\n        \"customerId\": 1,\n        \"orderDate\": \"2026-10-01T17:28:41.000Z\",\n        \"status\": \"pending\",\n        \"createdAt\": \"2026-10-01T17:28:41.000Z\",\n        \"updatedAt\": \"2026-10-01T17:28:41.000Z\",\n        \"customer\": {\n            \"id\": 1,\n            \"name\": \"ibu\",\n            \"email\": \"ibu@example.com\"\n        }\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/orders/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "orders",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/orders/2",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/orders/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "orders",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Random",
+      "item": [
+        {
+          "name": "http://localhost:3000",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost3000/holaholita",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/holaholita",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "holaholita"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Order-items",
+      "item": [
+        {
+          "name": "http://localhost:3000/api/order-items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/order-items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "order-items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/order-items/order/1/bicycles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/order-items/order/1/bicycles",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "order-items",
+                "order",
+                "1",
+                "bicycles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/order-items",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1,\n  \"bicycleId\": 1,\n  \"quantity\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/order-items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "order-items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/order-items",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1,\n  \"bicycleId\": 2,\n  \"quantity\": 1,\n  \"unitPrice\": 999.99\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/order-items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "order-items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/order-items/1",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 3,\n  \"unitPrice\": 1250.00\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/order-items/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "order-items",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/order-items/2",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/order-items/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "order-items",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/order-items/summary/paid",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/order-items/summary/paid",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "order-items",
+                "summary",
+                "paid"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/order-items/summary/paid?model=pro",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/order-items/summary/paid?model=pro",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "order-items",
+                "summary",
+                "paid"
+              ],
+              "query": [
+                {
+                  "key": "model",
+                  "value": "pro"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bicycle-details",
+      "item": [
+        {
+          "name": "http://localhost:3000/api/bicycles/eagerly/frame-material/carbon",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/bicycles/eagerly/frame-material/carbon",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "bicycles",
+                "eagerly",
+                "frame-material",
+                "carbon"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/bicycles/eagerly/frame-material/carbon",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/bicycles/eagerly/frame-material/carbon",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "bicycles",
+                "eagerly",
+                "frame-material",
+                "carbon"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/bicycles/eagerly/frame-material/carbon/1",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/bicycles/eagerly/frame-material/carbon/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "bicycles",
+                "eagerly",
+                "frame-material",
+                "carbon",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:3000/api/bicycles/eagerly/frame-material/carbon/1",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/bicycles/eagerly/frame-material/carbon/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "bicycles",
+                "eagerly",
+                "frame-material",
+                "carbon",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

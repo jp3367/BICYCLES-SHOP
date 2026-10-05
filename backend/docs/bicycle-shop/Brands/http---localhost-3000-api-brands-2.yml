@@ -1,0 +1,25 @@
+info:
+  name: http://localhost:3000/api/brands/2
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: http://localhost:3000/api/brands/2
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "name": "BH"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

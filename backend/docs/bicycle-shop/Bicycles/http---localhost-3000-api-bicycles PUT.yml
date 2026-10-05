@@ -1,0 +1,29 @@
+info:
+  name: http://localhost:3000/api/bicycles PUT
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: http://localhost:3000/api/bicycles/2
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "brandId": 1,
+        "model": "Sky",
+        "description": "Great for any occasion",
+        "price": 189.99,
+        "stock": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

@@ -1,0 +1,14 @@
+opencollection: 1.0.0
+
+info:
+  name: bicycle-shop
+
+docs:
+  content: "REST API for a bicycle shop: brands, bicycles, bicycle details, customers, orders and order items. https://github.com/jp3367/BICYCLES-SHOP"
+  type: text/markdown
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git
