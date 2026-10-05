@@ -2,6 +2,8 @@ import { Op } from "sequelize";
 import { OrderItem } from "./order-item.model.js";
 import { Order } from "../orders/order.model.js";
 import { Bicycle } from "../bicycles/bicycle.model.js";
+import { Customer } from "../customers/customer.model.js";
+import { Brand } from "../brands/brand.model.js";
 
 const includeOrderAndBicycle = [
     {
@@ -23,6 +25,7 @@ export class OrderItemService {
             order: [["id", "ASC"]],
         });
     }
+
     static async findById(id: number) {
         return OrderItem.findByPk(id, {
             include: includeOrderAndBicycle,
@@ -35,6 +38,22 @@ export class OrderItemService {
             order: [["id", "ASC"]],
         });
     }
+    static async findBrandwithBicycles(name: string) {
+        return Order.findAll({
+            include: [
+                { model: Customer, as: "customer", attributes: ["id", "name"] },
+                { model: OrderItem,as: "items", required: true, include: [{
+                    model: Bicycle, as: "bicycle", required: true, include: [{ 
+                        model: Brand, as: "brand", 
+                        where: { name }, required: true },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        });
+    }
+
     static async findOrderWithBicycles(orderId: number) {
         return Order.findByPk(orderId, {
             include: [
