@@ -1,6 +1,7 @@
 import { Bicycle } from "./bicycle.model.js";
 import { Brand } from "../brands/brand.model.js";
 import { BicycleDetail } from "../bicycle-details/bicycle-detail.model.js";
+import { Op } from "sequelize";
 
 const includeBrand = {
     model: Brand,
@@ -20,6 +21,7 @@ export class BicycleService {
             include: [includeBrand],
         });
     }
+
     //Bicycles by brandId
     static async findByBrandId(brandId: number) {
         return Bicycle.findAll({
@@ -28,6 +30,7 @@ export class BicycleService {
             order: [["id", "ASC"]],
         });
     }
+
     //Find bicycles between price range
     static async findByPriceRange(minPrice: number, maxPrice: number) {
         return Bicycle.findAll({
@@ -35,6 +38,23 @@ export class BicycleService {
             include: [includeBrand],
             order: [["price", "ASC"]],
         });
+    }
+
+    // Find biycles with low stock
+    static async findLowStock (maxStock: number) {
+        return Bicycle.findAll({
+            where: { stock: {[Op.lte]: maxStock} },
+            attributes: ["id", "model", "stock"],
+            include: [includeBrand],
+            order: [["stock", "ASC"]],
+        });
+    }
+
+    //  Find bicycles by brand name
+    static async findByBrandName(name: string) {
+        return Bicycle.findAll({
+            include: [{model: Brand, as: "brand", where: { name }, required: true}]
+        })
     }
 
     static async findEagerlyById(id: number) {
