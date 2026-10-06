@@ -20,6 +20,22 @@ export class BicycleService {
             include: [includeBrand],
         });
     }
+    //Bicycles by brandId
+    static async findByBrandId(brandId: number) {
+        return Bicycle.findAll({
+            where: { brandId },
+            include: [includeBrand],
+            order: [["id", "ASC"]],
+        });
+    }
+    //Find bicycles between price range
+    static async findByPriceRange(minPrice: number, maxPrice: number) {
+        return Bicycle.findAll({
+            where: { price: { $between: [minPrice, maxPrice] } },
+            include: [includeBrand],
+            order: [["price", "ASC"]],
+        });
+    }
 
     static async findEagerlyById(id: number) {
         return Bicycle.findByPk(id, {
