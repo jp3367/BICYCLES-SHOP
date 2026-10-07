@@ -1,6 +1,8 @@
 import { Customer } from "./customer.model.js";
 import { Order } from "../orders/order.model.js";
+import { OrderItem } from "../order-items/order-item.model.js";
 import { Op } from "sequelize";
+import { Bicycle } from "../bicycles/bicycle.model.js";
 
 export class CustomerService {
     static async findAll() {
@@ -11,7 +13,7 @@ export class CustomerService {
     static async findCustomersWithOrdersByNameSearch(searchTerm: string) {
         return Customer.findAll({
             where: { name: { [Op.like]: `%${searchTerm}%` } },
-            include: [{model: Order, as: "orders", required: true}],
+            include: [{ model: Order, as: "orders", required: true }],
         });
     }
     static async findById(id: number) {
@@ -20,6 +22,25 @@ export class CustomerService {
     static async emailExists(email: string) {
         const customer = await Customer.findOne({ where: { email } });
         return customer !== null;
+    }
+
+    // Find by email
+    static async findByEmail(email: string) {
+        return Customer.findOne({ where: { email } });
+    }
+
+    // Find Clients with orders and what they bought
+    static async findWithOrders(id: number) {
+        return Customer.findByPk(id, {
+            include: [{
+                model: Order, as: "orders",
+                include: [{
+                    model: OrderItem, as: "items",
+                    include: [{ model: Bicycle, as: "bicycle", attributes: ["id", "model"] }],
+                }],
+            }],
+            order: [[{ model: Order, as: "orders" }, "orderDate", "DESC"]],
+        });
     }
     static async create(data: {
         name: string;

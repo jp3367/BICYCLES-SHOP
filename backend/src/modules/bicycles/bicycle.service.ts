@@ -56,6 +56,20 @@ export class BicycleService {
             include: [{model: Brand, as: "brand", where: { name }, required: true}]
         })
     }
+    // Find bicycles with suspension and wheel size
+    static async findWithSuspensionAndWheel (minWheel: number) {
+        return Bicycle.findAll({
+            include: [{
+                model: BicycleDetail,
+                as: "detail",
+                required: true,
+                where: {
+                    suspension: {[Op.ne]: null}, //Op. ne = not equal (!=)
+                    wheelSize: {[Op.gte]: minWheel}//Op. gte = greater than or equal (>=)
+                }
+            }]
+        })
+    }
 
     static async findEagerlyById(id: number) {
         return Bicycle.findByPk(id, {
