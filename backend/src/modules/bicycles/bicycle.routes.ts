@@ -2,6 +2,8 @@ import { Router } from "express";
 import { BicycleController } from "./bicycle.controller.js";
 const router = Router();
 router.get("/", BicycleController.getAll);
+router.get("/with-brand-model", BicycleController.getAllWithBrandAndModel);
+router.get("/price/greater-than/:price", BicycleController.getByPriceGreaterThan);
 router.get("/:id", BicycleController.getById);
 router.get("/eagerly/frame-material/:frameMaterial", BicycleController.getAllEagerlyByFrameMaterial);
 router.get("/eagerly/:id", BicycleController.getEagerlyById);

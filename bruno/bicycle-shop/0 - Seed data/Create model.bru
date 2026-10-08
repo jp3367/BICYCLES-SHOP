@@ -1,0 +1,18 @@
+meta {
+  name: Create model
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/models
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Marlin 5",
+    "year": 2024
+  }
+}

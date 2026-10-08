@@ -5,6 +5,7 @@ import { defineAssociations } from "./models/associations.js";
 
 import "./modules/bicycles/bicycle.model.js";
 import "./modules/brands/brand.model.js";
+import "./modules/bicycle-models/bicycle-model.model.js";
 import "./modules/bicycle-details/bicycle-detail.model.js";
 import "./modules/customers/customer.model.js";
 import "./modules/orders/order.model.js";

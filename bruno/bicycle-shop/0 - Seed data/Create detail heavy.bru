@@ -1,0 +1,20 @@
+meta {
+  name: Create detail heavy
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/bicycle-details
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "bicycleId": 1,
+    "frameMaterial": "Steel",
+    "wheelSize": 26,
+    "weight": 22.5
+  }
+}

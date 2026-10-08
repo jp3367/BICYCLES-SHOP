@@ -3,6 +3,7 @@ import { OrderController } from "./order.controller.js";
 const router = Router();
 router.get("/", OrderController.getAll);
 router.get("/customer/:customerId", OrderController.getByCustomerId);
+router.get("/bicycles/price-less-than/:price/weight-greater-than/:weight", OrderController.getByBicyclePriceAndWeight);
 router.get("/:id", OrderController.getById);
 router.post("/", OrderController.create);
 router.put("/:id", OrderController.update);

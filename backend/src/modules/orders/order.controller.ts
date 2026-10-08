@@ -29,6 +29,27 @@ export class OrderController {
             next(error);
         }
     }
+    // EXAM 4
+    static async getByBicyclePriceAndWeight(
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) {
+        try {
+            const price = Number(req.params.price);
+            const weight = Number(req.params.weight);
+            if (Number.isNaN(price) || Number.isNaN(weight)) {
+                res.status(400).json({
+                    message: "price and weight must be numbers",
+                });
+                return;
+            }
+            const orders = await OrderService.findByBicyclePriceAndWeight(price, weight);
+            res.json(orders);
+        } catch (error) {
+            next(error);
+        }
+    }
     static async getById(
         req: Request,
         res: Response,

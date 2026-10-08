@@ -13,6 +13,7 @@ export class Bicycle extends Model<
 > {
     declare id: CreationOptional<number>;
     declare brandId: number;
+    declare modelId: number;
     declare model: string | null;
     declare description: string | null;
     declare price: number;
@@ -32,6 +33,13 @@ Bicycle.init(
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             references: { model: "brands", key: "id" },
+            onUpdate: "CASCADE",
+            onDelete: "RESTRICT",
+        },
+        modelId: {
+            type: DataTypes.INTEGER.UNSIGNED,
+            allowNull: false,
+            references: { model: "models", key: "id" },
             onUpdate: "CASCADE",
             onDelete: "RESTRICT",
         },

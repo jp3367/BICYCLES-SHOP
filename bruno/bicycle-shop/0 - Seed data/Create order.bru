@@ -1,0 +1,17 @@
+meta {
+  name: Create order
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/orders
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "customerId": 1
+  }
+}

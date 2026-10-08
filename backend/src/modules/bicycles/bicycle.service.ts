@@ -1,5 +1,6 @@
 import { Bicycle } from "./bicycle.model.js";
 import { Brand } from "../brands/brand.model.js";
+import { BicycleModel } from "../bicycle-models/bicycle-model.model.js";
 import { BicycleDetail } from "../bicycle-details/bicycle-detail.model.js";
 import { Op } from "sequelize";
 
@@ -7,6 +8,12 @@ const includeBrand = {
     model: Brand,
     as: "brand",
     attributes: ["id", "name"],
+};
+
+const includeModel = {
+    model: BicycleModel,
+    as: "bicycleModel",
+    attributes: ["id", "name", "year"],
 };
 
 export class BicycleService {
@@ -71,6 +78,23 @@ export class BicycleService {
         })
     }
 
+    // EXAM 2: All bicycles with their brand (Brand) and their model (Model)
+    static async findAllWithBrandAndModel() {
+        return Bicycle.findAll({
+            include: [includeBrand, includeModel],
+            order: [["id", "ASC"]],
+        });
+    }
+
+    // EXAM 3: Bicycles with a price greater than minPrice
+    static async findByPriceGreaterThan(minPrice: number) {
+        return Bicycle.findAll({
+            where: { price: { [Op.gt]: minPrice } }, //Op.gt = greater than (>)
+            include: [includeBrand],
+            order: [["price", "ASC"]],
+        });
+    }
+
     static async findEagerlyById(id: number) {
         return Bicycle.findByPk(id, {
             include: [includeBrand],
@@ -92,8 +116,13 @@ export class BicycleService {
         const brand = await Brand.findByPk(brandId);
         return brand !== null;
     }
+    static async modelExists(modelId: number) {
+        const bicycleModel = await BicycleModel.findByPk(modelId);
+        return bicycleModel !== null;
+    }
     static async create(data: {
         brandId: number;
+        modelId: number;
         model?: string | null;
         description?: string | null;
         price: number;
@@ -106,6 +135,7 @@ export class BicycleService {
         bicycle: Bicycle,
         data: {
             brandId?: number;
+            modelId?: number;
             model?: string | null;
             description?: string | null;
             price?: number;

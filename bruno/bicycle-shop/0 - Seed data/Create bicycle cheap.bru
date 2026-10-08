@@ -1,0 +1,21 @@
+meta {
+  name: Create bicycle cheap
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/bicycles
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "brandId": 1,
+    "modelId": 1,
+    "model": "City 80",
+    "price": 80,
+    "stock": 5
+  }
+}

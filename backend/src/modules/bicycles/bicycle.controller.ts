@@ -66,16 +66,49 @@ export class BicycleController {
             next(error);
         }
     }
+    // EXAM 2
+    static async getAllWithBrandAndModel(
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) {
+        try {
+            const bicycles = await BicycleService.findAllWithBrandAndModel();
+            res.json(bicycles);
+        } catch (error) {
+            next(error);
+        }
+    }
+    // EXAM 3
+    static async getByPriceGreaterThan(
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) {
+        try {
+            const price = Number(req.params.price);
+            if (Number.isNaN(price)) {
+                res.status(400).json({
+                    message: "price must be a number",
+                });
+                return;
+            }
+            const bicycles = await BicycleService.findByPriceGreaterThan(price);
+            res.json(bicycles);
+        } catch (error) {
+            next(error);
+        }
+    }
     static async create(
         req: Request,
         res: Response,
         next: NextFunction
     ) {
         try {
-            const { brandId, model, description, price, stock } = req.body;
-            if (brandId === undefined || price === undefined) {
+            const { brandId, modelId, model, description, price, stock } = req.body;
+            if (brandId === undefined || modelId === undefined || price === undefined) {
                 res.status(400).json({
-                    message: "brandId and price are required",
+                    message: "brandId, modelId and price are required",
                 });
                 return;
             }
@@ -85,8 +118,15 @@ export class BicycleController {
                 });
                 return;
             }
+            if (!(await BicycleService.modelExists(Number(modelId)))) {
+                res.status(400).json({
+                    message: "Model not found",
+                });
+                return;
+            }
             const bicycle = await BicycleService.create({
                 brandId: Number(brandId),
+                modelId: Number(modelId),
                 model,
                 description,
                 price,
@@ -111,7 +151,7 @@ export class BicycleController {
                 });
                 return;
             }
-            const { brandId, model, description, price, stock } = req.body;
+            const { brandId, modelId, model, description, price, stock } = req.body;
             if (
                 brandId !== undefined &&
                 !(await BicycleService.brandExists(Number(brandId)))
@@ -121,8 +161,18 @@ export class BicycleController {
                 });
                 return;
             }
+            if (
+                modelId !== undefined &&
+                !(await BicycleService.modelExists(Number(modelId)))
+            ) {
+                res.status(400).json({
+                    message: "Model not found",
+                });
+                return;
+            }
             const updatedBicycle = await BicycleService.update(bicycle, {
                 ...(brandId !== undefined && { brandId: Number(brandId) }),
+                ...(modelId !== undefined && { modelId: Number(modelId) }),
                 ...(model !== undefined && { model }),
                 ...(description !== undefined && { description }),
                 ...(price !== undefined && { price }),

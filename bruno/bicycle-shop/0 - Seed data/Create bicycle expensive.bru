@@ -1,0 +1,21 @@
+meta {
+  name: Create bicycle expensive
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/bicycles
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "brandId": 1,
+    "modelId": 1,
+    "model": "Pro 500",
+    "price": 500,
+    "stock": 2
+  }
+}

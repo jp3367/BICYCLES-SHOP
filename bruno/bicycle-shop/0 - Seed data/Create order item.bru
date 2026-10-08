@@ -1,0 +1,20 @@
+meta {
+  name: Create order item
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/order-items
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "orderId": 1,
+    "bicycleId": 1,
+    "quantity": 1,
+    "unitPrice": 80
+  }
+}

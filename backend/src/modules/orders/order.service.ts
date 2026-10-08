@@ -1,5 +1,7 @@
 import { Order } from "./order.model.js";
 import { Customer } from "../customers/customer.model.js";
+import { Bicycle } from "../bicycles/bicycle.model.js";
+import { BicycleDetail } from "../bicycle-details/bicycle-detail.model.js";
 import { Op } from "sequelize";
 
 type OrderStatus = "pending" | "paid" | "cancelled" | "shipped";
@@ -44,6 +46,34 @@ export class OrderService {
         return Order.findOne({
             where: { customerId },
             order: [["orderDate", "DESC"]],
+        });
+    }
+
+    // EXAM 4: Orders that include bicycles with price < maxPrice and weight > minWeight
+    // The weight is not in Bicycle, it is in BicycleDetail -> Order -> Bicycle -> BicycleDetail
+    static async findByBicyclePriceAndWeight(maxPrice: number, minWeight: number) {
+        return Order.findAll({
+            include: [
+                includeCustomer,
+                {
+                    model: Bicycle,
+                    as: "bicycles",
+                    required: true, // INNER JOIN: only orders that have a bicycle that matches
+                    where: { price: { [Op.lt]: maxPrice } }, //Op.lt = less than (<)
+                    attributes: ["id", "model", "price"],
+                    through: { attributes: ["quantity", "unitPrice"] }, // columns of OrderItem
+                    include: [
+                        {
+                            model: BicycleDetail,
+                            as: "detail",
+                            required: true,
+                            where: { weight: { [Op.gt]: minWeight } }, //Op.gt = greater than (>)
+                            attributes: ["weight"],
+                        },
+                    ],
+                },
+            ],
+            order: [["id", "ASC"]],
         });
     }
 

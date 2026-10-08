@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "bicycle-shop",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
