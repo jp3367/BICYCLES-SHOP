@@ -1,0 +1,17 @@
+meta {
+  name: Update detail
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/bicycle-details/2
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "weight": 7.9
+  }
+}

@@ -1,0 +1,17 @@
+meta {
+  name: Update brand
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/brands/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Trek Bikes"
+  }
+}

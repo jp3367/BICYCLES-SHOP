@@ -1,0 +1,19 @@
+meta {
+  name: Create order item (bicycle price, to delete)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/order-items
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "orderId": 1,
+    "bicycleId": 2,
+    "quantity": 1
+  }
+}

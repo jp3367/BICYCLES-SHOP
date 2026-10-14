@@ -1,0 +1,17 @@
+meta {
+  name: Create model (to delete)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/models
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Model to delete"
+  }
+}

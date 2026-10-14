@@ -1,0 +1,1310 @@
+{
+  "info": {
+    "name": "bicycle-shop",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Brands",
+      "item": [
+        {
+          "name": "Create brand",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/brands",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "brands"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Trek\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create brand (to delete)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/brands",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "brands"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Brand to delete\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get all brands",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/brands",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "brands"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get brand by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/brands/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "brands",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update brand",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/brands/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "brands",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Trek Bikes\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete brand",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/brands/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "brands",
+                "2"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 - Models",
+      "item": [
+        {
+          "name": "Create model",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/models",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Marlin 5\",\n  \"year\": 2024\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create model (to delete)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/models",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Model to delete\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get all models",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/models",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get model by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/models/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update model",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/models/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"year\": 2025\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete model",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/models/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models",
+                "2"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 - Bicycles",
+      "item": [
+        {
+          "name": "Create bicycle cheap heavy",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brandId\": 1,\n  \"modelId\": 1,\n  \"model\": \"City 80\",\n  \"description\": \"Cheap steel city bike\",\n  \"price\": 80,\n  \"stock\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create bicycle expensive",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brandId\": 1,\n  \"modelId\": 1,\n  \"model\": \"Pro 500\",\n  \"description\": \"Carbon road bike\",\n  \"price\": 500,\n  \"stock\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create bicycle (to delete)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brandId\": 1,\n  \"modelId\": 1,\n  \"model\": \"To delete\",\n  \"price\": 50\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get all bicycles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get bicycle by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update bicycle",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stock\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete bicycle",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles",
+                "3"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 - Bicycle details",
+      "item": [
+        {
+          "name": "Create detail heavy",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bicycle-details",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycle-details"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bicycleId\": 1,\n  \"frameMaterial\": \"Steel\",\n  \"wheelSize\": 26,\n  \"weight\": 22.5,\n  \"suspension\": \"Front fork\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create detail light",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bicycle-details",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycle-details"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bicycleId\": 2,\n  \"frameMaterial\": \"Carbon\",\n  \"wheelSize\": 28,\n  \"weight\": 8\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get all details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bicycle-details",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycle-details"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get detail by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bicycle-details/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycle-details",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update detail",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bicycle-details/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycle-details",
+                "2"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"weight\": 7.9\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete detail",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bicycle-details/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycle-details",
+                "2"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create detail light again",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bicycle-details",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycle-details"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bicycleId\": 2,\n  \"frameMaterial\": \"Carbon\",\n  \"wheelSize\": 28,\n  \"weight\": 8\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 - Customers",
+      "item": [
+        {
+          "name": "Create customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/customers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ana Garcia\",\n  \"email\": \"ana@mail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create customer (to delete)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/customers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Customer to delete\",\n  \"email\": \"delete@mail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get all customers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get customer by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update customer",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/customers/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ana.garcia@mail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete customer",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers",
+                "2"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 - Orders",
+      "item": [
+        {
+          "name": "Create order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create order (to delete)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": 1,\n  \"status\": \"pending\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get all orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get order by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update order",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"paid\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete order",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                "2"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "07 - Order items",
+      "item": [
+        {
+          "name": "Create order item",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/order-items",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "order-items"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1,\n  \"bicycleId\": 1,\n  \"quantity\": 1,\n  \"unitPrice\": 80\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Create order item (bicycle price, to delete)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/order-items",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "order-items"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": 1,\n  \"bicycleId\": 2,\n  \"quantity\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get all order items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/order-items",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "order-items"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get order item by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/order-items/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "order-items",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update order item",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/order-items/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "order-items",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Delete order item",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/order-items/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "order-items",
+                "2"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "08 - Queries",
+      "item": [
+        {
+          "name": "EXAM 2 - Bicycles with brand and model",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles/with-brand-model",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles",
+                "with-brand-model"
+              ]
+            }
+          }
+        },
+        {
+          "name": "EXAM 3 - Bicycles price greater than 100",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles/price/greater-than/100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles",
+                "price",
+                "greater-than",
+                "100"
+              ]
+            }
+          }
+        },
+        {
+          "name": "EXAM 4 - Orders bicycles price lt 100 weight gt 20",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders/bicycles/price-less-than/100/weight-greater-than/20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                "bicycles",
+                "price-less-than",
+                "100",
+                "weight-greater-than",
+                "20"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Bicycle eagerly by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles/eagerly/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles",
+                "eagerly",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Bicycles eagerly by frame material",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/bicycles/eagerly/frame-material/Carbon",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bicycles",
+                "eagerly",
+                "frame-material",
+                "Carbon"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Customers with orders by name search",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers/Ana/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers",
+                "Ana",
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Orders by customer",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders/customer/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                "customer",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Order items by order",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/order-items/order/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "order-items",
+                "order",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Order with bicycles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/order-items/order/1/bicycles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "order-items",
+                "order",
+                "1",
+                "bicycles"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Order summary by status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/order-items/summary/paid",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "order-items",
+                "summary",
+                "paid"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Order summary by status and model",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/order-items/summary/paid?model=City",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "order-items",
+                "summary",
+                "paid"
+              ],
+              "query": [
+                {
+                  "key": "model",
+                  "value": "City"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

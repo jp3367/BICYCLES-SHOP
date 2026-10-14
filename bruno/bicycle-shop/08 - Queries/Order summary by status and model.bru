@@ -1,0 +1,15 @@
+meta {
+  name: Order summary by status and model
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{baseUrl}}/order-items/summary/paid?model=City
+  body: none
+  auth: none
+}
+
+params:query {
+  model: City
+}

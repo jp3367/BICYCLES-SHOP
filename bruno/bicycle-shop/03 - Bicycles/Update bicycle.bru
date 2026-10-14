@@ -1,0 +1,17 @@
+meta {
+  name: Update bicycle
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseUrl}}/bicycles/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "stock": 10
+  }
+}

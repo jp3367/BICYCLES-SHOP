@@ -1,0 +1,11 @@
+meta {
+  name: Order summary by status
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}/order-items/summary/paid
+  body: none
+  auth: none
+}

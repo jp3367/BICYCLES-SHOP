@@ -1,0 +1,18 @@
+meta {
+  name: Create customer (to delete)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/customers
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Customer to delete",
+    "email": "delete@mail.com"
+  }
+}

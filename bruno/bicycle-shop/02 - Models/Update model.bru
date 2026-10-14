@@ -1,0 +1,17 @@
+meta {
+  name: Update model
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/models/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "year": 2025
+  }
+}

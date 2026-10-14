@@ -1,0 +1,17 @@
+meta {
+  name: Update order item
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/order-items/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "quantity": 2
+  }
+}

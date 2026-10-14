@@ -1,0 +1,20 @@
+meta {
+  name: Create detail light again
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/bicycle-details
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "bicycleId": 2,
+    "frameMaterial": "Carbon",
+    "wheelSize": 28,
+    "weight": 8
+  }
+}

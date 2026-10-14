@@ -1,0 +1,17 @@
+meta {
+  name: Update customer
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/customers/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "ana.garcia@mail.com"
+  }
+}
