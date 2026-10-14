@@ -31,7 +31,7 @@ Así que todo el ejercicio 1 consiste en **copiar lo que ya está hecho con Bran
 
 ## ⚠️ Dos trampas de nombres (importantes)
 
-### Trampa 1: la clase no puede llamarse `Model`
+### Trampa 1: la clase se llama `Model`, así que hay que renombrar el `Model` de Sequelize
 
 En cada `*.model.ts` hacemos:
 
@@ -40,7 +40,14 @@ import { Model, DataTypes, ... } from "sequelize";
 export class Brand extends Model<...> { }
 ```
 
-Si la clase se llamara `Model`, quedaría `class Model extends Model`, y eso choca con el `Model` de Sequelize. Por eso la clase se llama **`BicycleModel`** y la tabla sigue siendo **`models`**. La carpeta es `bicycle-models`, porque `models/` ya existe (es donde está `associations.ts`), y la ruta es `/api/models`.
+Si nuestra clase también se llama `Model`, quedaría `class Model extends Model`, y eso choca con el `Model` de Sequelize. La solución (la que pide el profe) es **renombrar el import con un alias**:
+
+```ts
+import { Model as SequelizeModel, DataTypes, ... } from "sequelize";
+export class Model extends SequelizeModel<...> { }
+```
+
+Así la clase se llama **`Model`**, igual que en el ERD. El alias `SequelizeModel` solo hace falta **en ese fichero**: en los demás importas tu `Model` normalmente (`import { Model } from "../bicycle-models/bicycle-model.model.js"`). La tabla es **`models`**, la carpeta es `bicycle-models` (porque `models/` ya existe y es donde está `associations.ts`) y la ruta es `/api/models`.
 
 ### Trampa 2: el alias no puede ser `"model"`
 
@@ -78,9 +85,11 @@ Para cada entidad nueva el proyecto sigue siempre este orden:
 Es una copia de `brand.model.ts` con un campo extra opcional, `year`:
 
 ```ts
-export class BicycleModel extends Model<
-    InferAttributes<BicycleModel>,
-    InferCreationAttributes<BicycleModel>
+import { Model as SequelizeModel, DataTypes, /* ... */ } from "sequelize";
+
+export class Model extends SequelizeModel<
+    InferAttributes<Model>,
+    InferCreationAttributes<Model>
 > {
     declare id: CreationOptional<number>;      // autoincrement → opcional al crear
     declare name: string;                      // obligatorio
@@ -89,7 +98,7 @@ export class BicycleModel extends Model<
     declare updatedAt: CreationOptional<Date>;
 }
 
-BicycleModel.init(
+Model.init(
     {
         id:   { type: DataTypes.INTEGER.UNSIGNED, autoIncrement: true, primaryKey: true },
         name: { type: DataTypes.STRING(150), allowNull: false },
@@ -97,7 +106,7 @@ BicycleModel.init(
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
     },
-    { sequelize, tableName: "models", modelName: "BicycleModel", timestamps: true }
+    { sequelize, tableName: "models", modelName: "Model", timestamps: true }
 );
 ```
 
@@ -110,9 +119,9 @@ Solo habla con la base de datos, igual que `BrandService`:
 
 | Método | Sequelize |
 |--------|-----------|
-| `findAll()` | `BicycleModel.findAll({ order: [["id","ASC"]] })` |
-| `findById(id)` | `BicycleModel.findByPk(id)` |
-| `create(data)` | `BicycleModel.create(data)` |
+| `findAll()` | `Model.findAll({ order: [["id","ASC"]] })` |
+| `findById(id)` | `Model.findByPk(id)` |
+| `create(data)` | `Model.create(data)` |
 | `update(m, data)` | `m.update(data)` |
 | `delete(m)` | `m.destroy()` |
 
@@ -162,8 +171,8 @@ router.use("/models", bicycleModelRoutes);   // → /api/models
 Va justo debajo de la de Brand, porque es el mismo tipo de relación:
 
 ```ts
-BicycleModel.hasMany(Bicycle, { foreignKey: "modelId", as: "bicycles" });
-Bicycle.belongsTo(BicycleModel, { foreignKey: "modelId", as: "bicycleModel" });
+Model.hasMany(Bicycle, { foreignKey: "modelId", as: "bicycles" });
+Bicycle.belongsTo(Model, { foreignKey: "modelId", as: "bicycleModel" });
 ```
 
 - **`hasMany`** se pone en el lado "1" (Model tiene muchas bicis).
@@ -200,7 +209,7 @@ modelId: {
 
 ```ts
 static async modelExists(modelId: number) {
-    const bicycleModel = await BicycleModel.findByPk(modelId);
+    const bicycleModel = await Model.findByPk(modelId);
     return bicycleModel !== null;
 }
 ```
@@ -231,7 +240,7 @@ En `bicycle.service.ts` ya existía el objeto `includeBrand`. Creamos otro igual
 
 ```ts
 const includeModel = {
-    model: BicycleModel,          // ← la CLASE de Sequelize
+    model: Model,                 // ← nuestra CLASE Model
     as: "bicycleModel",           // ← el MISMO alias que en associations.ts
     attributes: ["id", "name", "year"],
 };

@@ -1,5 +1,5 @@
 import {
-    Model,
+    Model as SequelizeModel,
     DataTypes,
     type InferAttributes,
     type InferCreationAttributes,
@@ -7,11 +7,10 @@ import {
 } from "sequelize";
 import { sequelize } from "../../config/database.js";
 
-// The entity is "Model" in the ERD, but the class can't be called Model
-// because it would collide with Model imported from sequelize
-export class BicycleModel extends Model<
-    InferAttributes<BicycleModel>,
-    InferCreationAttributes<BicycleModel>
+// Sequelize's Model is imported as SequelizeModel so this class can be called Model (as in the ERD)
+export class Model extends SequelizeModel<
+    InferAttributes<Model>,
+    InferCreationAttributes<Model>
 > {
     declare id: CreationOptional<number>;
     declare name: string;
@@ -20,7 +19,7 @@ export class BicycleModel extends Model<
     declare updatedAt: CreationOptional<Date>;
 }
 
-BicycleModel.init(
+Model.init(
     {
         id: {
             type: DataTypes.INTEGER.UNSIGNED,
@@ -41,7 +40,7 @@ BicycleModel.init(
     {
         sequelize,
         tableName: "models",
-        modelName: "BicycleModel",
+        modelName: "Model",
         timestamps: true,
     }
 );

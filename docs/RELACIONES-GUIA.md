@@ -235,7 +235,7 @@ Brand.findAll({
 ### 5.9 Con la nueva entidad Model: un modelo con sus bicis y la marca de cada una
 
 ```ts
-BicycleModel.findByPk(id, {
+Model.findByPk(id, {
     include: [{ model: Bicycle, as: "bicycles", include: [{ model: Brand, as: "brand", attributes: ["name"] }] }],
 });
 ```

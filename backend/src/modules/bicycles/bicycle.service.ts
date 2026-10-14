@@ -1,6 +1,6 @@
 import { Bicycle } from "./bicycle.model.js";
 import { Brand } from "../brands/brand.model.js";
-import { BicycleModel } from "../bicycle-models/bicycle-model.model.js";
+import { Model } from "../bicycle-models/bicycle-model.model.js";
 import { BicycleDetail } from "../bicycle-details/bicycle-detail.model.js";
 import { Op } from "sequelize";
 
@@ -11,7 +11,7 @@ const includeBrand = {
 };
 
 const includeModel = {
-    model: BicycleModel,
+    model: Model,
     as: "bicycleModel",
     attributes: ["id", "name", "year"],
 };
@@ -117,7 +117,7 @@ export class BicycleService {
         return brand !== null;
     }
     static async modelExists(modelId: number) {
-        const bicycleModel = await BicycleModel.findByPk(modelId);
+        const bicycleModel = await Model.findByPk(modelId);
         return bicycleModel !== null;
     }
     static async create(data: {
